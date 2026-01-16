@@ -1,0 +1,80 @@
+-- Disable Mason auto-install since we're managing LSPs through Nix
+return {
+  -- Completely disable mason-lspconfig handlers
+  {
+    "mason-org/mason-lspconfig.nvim",
+    enabled = false,
+  },
+
+  -- Keep Mason UI available for reference, but don't auto-install
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      ensure_installed = {}, -- Empty - manage via Nix
+    },
+  },
+
+  -- Configure LSP servers (Nix-installed binaries will be found in PATH)
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- Rust
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+              },
+              checkOnSave = {
+                command = "clippy",
+              },
+            },
+          },
+        },
+
+        -- Nix
+        nil_ls = {},
+
+        -- TypeScript/JavaScript - Using native tsserver (supports Go performance improvements)
+        -- Note: typescript-language-server is still used as the LSP wrapper
+        -- but it delegates to the native tsserver (from the typescript package)
+        ts_ls = {
+          -- Native tsserver settings
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+
+        -- Python
+        pyright = {},
+
+        -- Haskell
+        hls = {
+          filetypes = { "haskell", "lhaskell", "cabal" },
+        },
+      },
+    },
+  },
+}

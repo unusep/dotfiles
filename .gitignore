@@ -1,0 +1,43 @@
+# Cache and build artifacts
+.cache/
+*.swp
+*.swo
+*~
+
+# Neovim
+nvim/lazy-lock.json
+nvim/plugin/packer_compiled.lua
+nvim/.netrwhist
+
+# Node/npm
+node_modules/
+*.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Rust
+target/
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# Raycast scripts (may contain API keys)
+raycast/
+
+# Claude Code local settings (may contain credentials)
+.claude/settings.local.json
