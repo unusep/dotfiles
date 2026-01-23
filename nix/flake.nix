@@ -63,6 +63,9 @@
           # Homebrew
           homebrew = {
             enable = true;
+            brews = [
+              "neovim"
+            ];
             casks = [
               "karabiner-elements"
               "raycast"
@@ -86,6 +89,7 @@
             
             home.packages = with pkgs; [
               ripgrep fd jq eza bat fzf zoxide claude-code
+              direnv lazygit gh
 
               # Language runtimes (Mason will handle LSPs/formatters/debuggers)
               nodejs
@@ -124,6 +128,9 @@
 
                 # Zoxide
                 eval "$(zoxide init zsh)"
+
+                # Direnv
+                eval "$(direnv hook zsh)"
               '';
             };
 
@@ -794,6 +801,15 @@
                 // can be useful for removing wrappers around commands
                 // Note: be sure to escape backslashes and similar characters properly
                 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+              '';
+            };
+
+            # Ghostty configuration file
+            home.file.".config/ghostty/config" = {
+              force = true;
+              text = ''
+                font-family = JetBrains Mono
+                font-size = 18
               '';
             };
 
