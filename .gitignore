@@ -41,3 +41,15 @@ raycast/
 
 # Claude Code local settings (may contain credentials)
 .claude/settings.local.json
+
+# GitHub CLI (hosts.yml may contain tokens)
+gh/hosts.yml
+
+# Auto-generated configs
+configstore/
+karabiner/automatic_backups/
+
+# Nix-managed symlinks (actual config lives in flake)
+ghostty/
+karabiner/karabiner.json
+zellij/config.kdl
