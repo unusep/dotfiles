@@ -67,6 +67,7 @@
               "neovim"
             ];
             casks = [
+              "docker"
               "karabiner-elements"
               "raycast"
               "zoom"
