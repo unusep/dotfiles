@@ -89,7 +89,7 @@
             home.stateVersion = "24.05";
             
             home.packages = with pkgs; [
-              ripgrep fd jq eza bat fzf zoxide claude-code
+              ripgrep fd jq eza bat fzf zoxide
               direnv lazygit gh
 
               # Language runtimes (Mason will handle LSPs/formatters/debuggers)
@@ -106,6 +106,26 @@
 
               # Mason will auto-install: Python/TS LSPs, formatters, linters, DAP adapters
             ];
+
+            programs.claude-code = {
+              enable = true;
+              settings = {
+                permissions = {
+                  allow = [ "WebSearch" ];
+                  defaultMode = "default";
+                };
+                enabledPlugins = {
+                  "typescript-lsp@claude-plugins-official" = true;
+                  "lua-lsp@claude-plugins-official" = true;
+                  "pyright-lsp@claude-plugins-official" = true;
+                };
+                promptSuggestionEnabled = false;
+                attribution = {
+                  commit = "";
+                  pr = "";
+                };
+              };
+            };
 
             programs.zsh = {
               enable = true;
