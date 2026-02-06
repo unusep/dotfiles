@@ -35,7 +35,7 @@
             home = "/Users/${user}";
           };
 
-          environment.systemPackages = with pkgs; [ vim git curl google-chrome zellij aerospace ghostty-bin vscode ];
+          environment.systemPackages = with pkgs; [ vim git curl zellij aerospace ghostty-bin vscode ];
 
           # macOS Settings
           system.defaults = {
@@ -45,7 +45,7 @@
               orientation = "left";
               persistent-apps = [
                 "/System/Applications/Messages.app"
-                "/Applications/Nix Apps/Google Chrome.app"
+                "/Applications/Google Chrome.app"
                 "/Applications/Nix Apps/Ghostty.app"
               ];
             };
@@ -68,6 +68,7 @@
             ];
             casks = [
               "docker"
+              "google-chrome"
               "karabiner-elements"
               "raycast"
               "zoom"
