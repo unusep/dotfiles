@@ -1,0 +1,25 @@
+{ ... }: {
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "sudo" "docker" "kubectl" "vi-mode" ];
+      theme = "robbyrussell";
+    };
+    shellAliases = {
+      ls = "eza --icons";
+      ll = "eza -l --icons --git -a";
+      v = "nvim";
+    };
+    initContent = ''
+      bindkey -v
+
+      eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+
+      eval "$(zoxide init zsh)"
+
+      eval "$(direnv hook zsh)"
+    '';
+  };
+}
