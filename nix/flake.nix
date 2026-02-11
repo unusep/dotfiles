@@ -21,7 +21,6 @@
         # 1. Main System Configuration
         ({ pkgs, ... }: {
           
-          # --- FIXED: The Missing Link ---
           # This tells nix-darwin who owns the Dock/Finder settings
           system.primaryUser = user;
           # -----------------------------
@@ -44,9 +43,9 @@
               show-recents = false;
               orientation = "left";
               persistent-apps = [
-                "/System/Applications/Messages.app"
                 "/Applications/Google Chrome.app"
                 "/Applications/Nix Apps/Ghostty.app"
+                "/System/Applications/Messages.app"
               ];
             };
             finder = { AppleShowAllExtensions = true; _FXShowPosixPathInTitle = true; };
@@ -105,7 +104,8 @@
               rustfmt        # Rust formatter
               clippy         # Rust linter
 
-              # Mason will auto-install: Python/TS LSPs, formatters, linters, DAP adapters
+              # Build tools
+              cmake
             ];
 
             programs.claude-code = {
