@@ -12,6 +12,7 @@ nvim/.netrwhist
 # Node/npm
 node_modules/
 *.lock
+!nix/flake.lock
 package-lock.json
 pnpm-lock.yaml
 

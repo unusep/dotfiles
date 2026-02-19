@@ -7,9 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, claude-code, ... }:
   let
     user = "deshuncai";
     hostname = "Deshuns-MacBook-Pro";
@@ -19,6 +20,7 @@
       inherit system;
       specialArgs = { inherit user hostname self; };
       modules = [
+        { nixpkgs.overlays = [ claude-code.overlays.default ]; }
         ./modules/system.nix
 
         home-manager.darwinModules.home-manager
