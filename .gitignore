@@ -5,7 +5,6 @@
 *~
 
 # Neovim
-nvim/lazy-lock.json
 nvim/plugin/packer_compiled.lua
 nvim/.netrwhist
 
@@ -52,6 +51,9 @@ cagent/
 karabiner/automatic_backups/
 
 # Nix-managed symlinks (actual config lives in flake)
+/nvim
+/git/
+gh/config.yml
 ghostty/
 karabiner/karabiner.json
 zellij/config.kdl

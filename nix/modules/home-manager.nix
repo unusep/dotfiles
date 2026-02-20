@@ -12,7 +12,6 @@
     zoxide
     direnv
     lazygit
-    gh
 
     nodejs
     bun

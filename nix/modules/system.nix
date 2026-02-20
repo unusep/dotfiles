@@ -45,9 +45,10 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "neovim"
-    ];
+    onActivation = {
+      cleanup = "none";
+      upgrade = false;
+    };
     casks = [
       "docker"
       "google-chrome"
