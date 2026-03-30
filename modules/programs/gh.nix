@@ -1,7 +1,7 @@
 { ... }: {
   programs.gh = {
     enable = true;
-    gitCredentialHelper.enable = false;
+    gitCredentialHelper.enable = true;
     settings = {
       version = 1;
       git_protocol = "https";

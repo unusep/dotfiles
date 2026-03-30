@@ -10,12 +10,13 @@
     claude-code.url = "github:sadjow/claude-code-nix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, claude-code, rust-overlay, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, claude-code, rust-overlay, nix-homebrew, ... }:
   let
-    user = "deshuncai";
-    hostname = "Deshuns-MacBook-Pro";
+    user = builtins.getEnv "SUDO_USER";
+    hostname = builtins.getEnv "HOSTNAME";
     system = "aarch64-darwin";
   in {
     darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
@@ -24,6 +25,15 @@
       modules = [
         { nixpkgs.overlays = [ claude-code.overlays.default rust-overlay.overlays.default ]; }
         ./modules/system.nix
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = true;
+            user = user;
+            autoMigrate = true;
+          };
+        }
 
         home-manager.darwinModules.home-manager
         {

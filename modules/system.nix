@@ -2,6 +2,7 @@
   system.primaryUser = user;
 
   nix.settings.experimental-features = "nix-command flakes";
+  nix.enable = false; # required when using Determinate Nix installer
   nixpkgs.config.allowUnfree = true;
 
   users.users.${user} = {
@@ -61,11 +62,11 @@
       "direnv"
     ];
     casks = [
-      "cmux"
+      "manaflow-ai/cmux/cmux"
       "claude"
-"docker"
+      "docker"
       "arc"
-      "hrm"
+      "wontaeyang/hrm/hrm"
       "karabiner-elements"
       "raycast"
       "zoom"

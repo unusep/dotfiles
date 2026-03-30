@@ -12,7 +12,7 @@
       ll = "eza -l --icons --git -a";
       v = "nvim";
       cc = "claude";
-      nix-up = "nix flake update ~/nix-config && sudo darwin-rebuild switch --flake ~/nix-config";
+      nix-up = "nix flake update ~/nix-config && sudo HOSTNAME=$(scutil --get LocalHostName) darwin-rebuild switch --flake ~/nix-config --impure";
       nup = "nix-up";
     };
     initContent = ''

@@ -12,8 +12,8 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ### 2. Clone and apply the configuration
 ```bash
 git clone https://github.com/unusep/dotfiles.git ~/nix-config
-cd ~/nix-config/nix
-sudo nix run nix-darwin -- switch --flake .
+cd ~/nix-config
+HOSTNAME=$(hostname) sudo -E nix run nix-darwin -- switch --flake . --impure
 ```
 
 ### 3. Install Neovim plugins
@@ -54,7 +54,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 git clone https://github.com/unusep/dotfiles.git ~/nix-config
 
 # 3. Apply the configuration (requires sudo)
-cd ~/nix-config/nix && sudo nix run nix-darwin -- switch --flake .
+cd ~/nix-config && HOSTNAME=$(hostname) sudo -E nix run nix-darwin -- switch --flake . --impure
 
 # 4. Reload shell
 exec $SHELL
